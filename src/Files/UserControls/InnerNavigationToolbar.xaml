@@ -225,6 +225,17 @@
                         <FontIcon Glyph="&#xE756;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+                <AppBarButton
+                    x:Name="InstallInfFileButton"
+                    x:Load="{x:Bind ViewModel.IsInfFile, Mode=OneWay, FallbackValue=False}"
+                    Command="{x:Bind ViewModel.InstallInfCommand, Mode=OneWay}"
+                    Label="{helpers:ResourceString Name=InstallInfFile}"
+                    LabelPosition="Default"
+                    ToolTipService.ToolTip="{helpers:ResourceString Name=InstallInfFile}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE756;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <CommandBar

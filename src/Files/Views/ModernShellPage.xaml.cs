@@ -205,6 +205,7 @@ namespace Files.Views
             NavToolbarViewModel.EmptyRecycleBinCommand = new RelayCommand(() => SlimContentPage?.CommandsViewModel.EmptyRecycleBinCommand.Execute(null));
             NavToolbarViewModel.RunWithPowerShellCommand = new RelayCommand(async () => await Win32Helpers.InvokeWin32ComponentAsync("powershell", this, PathNormalization.NormalizePath(SlimContentPage?.SelectedItems.First().ItemPath)));
             NavToolbarViewModel.PropertiesCommand = new RelayCommand(() => SlimContentPage?.CommandsViewModel.ShowPropertiesCommand.Execute(null));
+            NavToolbarViewModel.InstallInfCommand = new RelayCommand(() => Win32InteropHelpers.InstallInf(PathNormalization.NormalizePath(SlimContentPage?.SelectedItems.First().ItemPath)));
         }
 
         private void ModernShellPage_RefreshWidgetsRequested(object sender, EventArgs e)
