@@ -510,7 +510,7 @@ namespace Files.ViewModels
 
         private bool IsSearchResults { get; set; }
 
-        private void UpdateEmptyTextType()
+        public void UpdateEmptyTextType()
         {
             EmptyTextType = FilesAndFolders.Count == 0 ? (IsSearchResults ? EmptyTextType.NoSearchResultsFound : EmptyTextType.FolderEmpty) : EmptyTextType.None;
         }
@@ -1927,7 +1927,7 @@ namespace Files.ViewModels
                                         lastItemAdded = await AddFileOrFolderAsync(operation.FileName, returnformat);
                                         if (lastItemAdded != null)
                                         {
-                                            anyEdits = true;                      
+                                            anyEdits = true;
                                         }
                                         break;
 
@@ -1992,8 +1992,8 @@ namespace Files.ViewModels
                     {
                         await OrderFilesAndFoldersAsync();
                         await ApplyFilesAndFoldersChangesAsync();
-                        if (lastItemAdded != null) 
-                        { 
+                        if (lastItemAdded != null)
+                        {
                             await NotifyListedItemAddedAsync(lastItemAdded);
                         }
                         anyEdits = false;
