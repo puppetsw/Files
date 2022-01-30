@@ -106,6 +106,7 @@ namespace Files
                 // Settings not related to IUserSettingsService:
                 .AddSingleton<IFileTagsSettingsService, FileTagsSettingsService>()
                 .AddSingleton<IBundlesSettingsService, BundlesSettingsService>()
+                .AddSingleton<IUpdateSettingsService, UpdateSettingsService>()
 
                 // TODO: Dialogs:
 
@@ -183,7 +184,7 @@ namespace Files
             });
 
             // Check for required updates
-            new AppUpdater().CheckForUpdatesAsync();
+            //new AppUpdater().CheckForUpdatesAsync();
         }
 
         private void OnLeavingBackground(object sender, LeavingBackgroundEventArgs e)

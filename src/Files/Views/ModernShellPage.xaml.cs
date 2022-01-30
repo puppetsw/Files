@@ -51,6 +51,8 @@ namespace Files.Views
 
         private IUserSettingsService UserSettingsService { get; } = Ioc.Default.GetService<IUserSettingsService>();
 
+        private IUpdateSettingsService UpdateSettingService { get; } = Ioc.Default.GetService<IUpdateSettingsService>();
+
         public bool IsCurrentInstance
         {
             get
@@ -212,6 +214,7 @@ namespace Files.Views
             NavToolbarViewModel.RotateImageLeftCommand = new RelayCommand(async () => SlimContentPage?.CommandsViewModel.RotateImageLeftCommand.Execute(null));
             NavToolbarViewModel.RotateImageRightCommand = new RelayCommand(async () => SlimContentPage?.CommandsViewModel.RotateImageRightCommand.Execute(null));
             NavToolbarViewModel.InstallFontCommand = new RelayCommand(() => SlimContentPage?.CommandsViewModel.InstallFontCommand.Execute(null));
+            NavToolbarViewModel.UpdateCommand = new RelayCommand(() => UpdateSettingService.DownloadUpdates());
         }
 
         private void ModernShellPage_RefreshWidgetsRequested(object sender, EventArgs e)
