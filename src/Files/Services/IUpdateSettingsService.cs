@@ -6,20 +6,19 @@ namespace Files.Services
     public interface IUpdateSettingsService : IBaseSettingsService, INotifyPropertyChanged
     {
         /// <summary>
-        /// Gets or sets a value indicating whether [mandatory only].
+        /// Gets or sets a value indicating whether mandatory updates
+        /// should be downloaded only.
         /// </summary>
-        /// <value><c>true</c> if [mandatory only]; otherwise, <c>false</c>.</value>
         bool MandatoryOnly { get; set; }
 
         /// <summary>
-        /// Occurs when [updates are available event].
+        /// Occurs when updates are available.
         /// </summary>
         event EventHandler UpdateAvailableEvent;
 
         /// <summary>
-        /// Gets a value indicating whether [are updates available].
+        /// Gets a value indicating whether updates are available.
         /// </summary>
-        /// <value><c>true</c> if [are updates available]; otherwise, <c>false</c>.</value>
         bool IsUpdateAvailable { get; }
 
         /// <summary>

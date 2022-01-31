@@ -598,7 +598,6 @@
                     Visibility="{x:Bind ShowSettingsButton, Mode=OneWay}">
                     <FontIcon FontSize="14" Glyph="&#xE115;" />
                 </Button>
-
             </StackPanel>
 
             <muxc:TeachingTip

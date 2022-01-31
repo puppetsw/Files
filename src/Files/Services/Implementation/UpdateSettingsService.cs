@@ -81,12 +81,6 @@ namespace Files.Services.Implementation
 
         public async void CheckForUpdates()
         {
-// #if DEBUG
-//             UpdateAvailableEvent?.Invoke(this, EventArgs.Empty);
-//             IsUpdateAvailable = true;
-//             return;
-// #endif
-
             var updateList = await GetUpdateList();
 
             if (updateList is not null && updateList.Count > 0)
@@ -94,7 +88,6 @@ namespace Files.Services.Implementation
                 UpdateAvailableEvent?.Invoke(this, EventArgs.Empty);
                 IsUpdateAvailable = true;
             }
-
         }
 
         private async Task<IReadOnlyList<StorePackageUpdate>> GetUpdateList()
