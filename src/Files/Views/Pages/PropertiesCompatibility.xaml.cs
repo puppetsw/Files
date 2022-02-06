@@ -39,7 +39,8 @@ namespace Files.Views
 
         public override async Task<bool> SaveChangesAsync(ListedItem item)
         {
-            if (CompatibilityProperties != null)
+            if (CompatibilityProperties is not null &&
+                CompatibilityProperties.HasPropertyChanged)
             {
                 return await CompatibilityProperties.SetCompatibilityOptions();
             }

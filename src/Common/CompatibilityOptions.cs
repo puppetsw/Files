@@ -50,6 +50,12 @@ namespace Files.Common
             public const string RegRunAsAdministrator = "RUNASADMIN";
             public const string RegRegisterForRestart = "REGISTERAPPRESTART";
         }
+
+        public CompatibilityOptions ShallowCopy()
+        {
+            return (CompatibilityOptions)MemberwiseClone();
+        }
+
     }
 
     [Flags]

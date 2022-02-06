@@ -18,6 +18,7 @@ namespace Files.ViewModels.Properties
 
         private string ExePath => Item is ShortcutItem sht ? sht.TargetPath : Item.ItemPath;
 
+        private CompatibilityOptions initialCompatibilityOptions;
         private CompatibilityOptions compatibilityOptions;
         public CompatibilityOptions CompatibilityOptions
         {
@@ -34,6 +35,7 @@ namespace Files.ViewModels.Properties
                     HighDpiOption = HighDpiOptionList.SingleOrDefault(x => x.Value == value.HighDpiOption);
                     HighDpiOverride = HighDpiOverrideList.SingleOrDefault(x => x.Value == value.HighDpiOverride);
                     ReducedColorMode = ReducedColorModeList.SingleOrDefault(x => x.Value == value.ReducedColorMode);
+                    initialCompatibilityOptions = compatibilityOptions.ShallowCopy();
                 }
             }
         }
@@ -141,6 +143,8 @@ namespace Files.ViewModels.Properties
                 }
             }
         }
+
+        public bool HasPropertyChanged => !initialCompatibilityOptions.Equals(compatibilityOptions);
 
         public List<LocalizedEnum<HighDpiOption>> HighDpiOptionList { get; } = Enum.GetValues(typeof(HighDpiOption)).Cast<HighDpiOption>().Select(x => new LocalizedEnum<HighDpiOption>(x)).ToList();
         public List<LocalizedEnum<HighDpiOverride>> HighDpiOverrideList { get; } = Enum.GetValues(typeof(HighDpiOverride)).Cast<HighDpiOverride>().Where(x => x != Common.HighDpiOverride.Advanced).Select(x => new LocalizedEnum<HighDpiOverride>(x)).ToList();
