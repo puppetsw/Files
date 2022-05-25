@@ -53,6 +53,7 @@ namespace Files.Uwp.ServicesImplementation
 
             PackageManager pm = new PackageManager();
             DeploymentResult deploymentResult = null;
+            var currentPackageName = Package.Current.Id.Name;
 
             try
             {
@@ -71,7 +72,7 @@ namespace Files.Uwp.ServicesImplementation
 
                 // Have to use ForceTargetAppShutdown flag as the appinstaller won't update while it's being used.
                 deploymentResult = await pm.RequestAddPackageByAppInstallerFileAsync(
-                    DownloadUri,
+                    new Uri(_sideloadVersion[currentPackageName]),
                     AddPackageByAppInstallerOptions.ForceTargetAppShutdown,
                     pm.GetDefaultPackageVolume()).AsTask(progress);
 
